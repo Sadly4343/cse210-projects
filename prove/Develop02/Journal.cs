@@ -4,10 +4,7 @@ public class Journal
 
     public void AddEntry(Entry newEntry)
     {
-        _entries = new List<string>()
-        {
-
-        }
+        _entries.Add(newEntry);
     }
 
     public void DisplayAll()
@@ -15,9 +12,14 @@ public class Journal
 
     }
 
-    public void SaveToFile(string file)
+    public void SaveToFile(List<Entry> _entries)
     {
+        string filename = "entries.txt";
 
+        using (StreamWriter outputFile = new StreamWriter(filename))
+        {
+            foreach (Entry )
+        }
     }
     public void LoadToFile(string file)
     {
