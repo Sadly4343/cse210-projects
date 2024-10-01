@@ -1,4 +1,5 @@
-using System.Threading.Tasks.Dataflow;
+using System;
+using System.Collections.Generic;
 
 public class PromptGenerator
 {
@@ -6,10 +7,11 @@ public class PromptGenerator
 
     public PromptGenerator()
     {
-        _prompts = new List<string>()
+        _prompts = new List<string>
         {
-            "What is your favorite color?",
-            "What is your favorite food?",
+            "What did you learn today?",
+            "What made you smile today?",
+            "what do you smile at today?",
         };
     }
 
