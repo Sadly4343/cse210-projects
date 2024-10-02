@@ -1,6 +1,5 @@
 using System;
-using System.Collections.Generic;
-using System.IO;
+
 
 class Program
 {
@@ -9,7 +8,16 @@ class Program
         PromptGenerator promptGenerator = new PromptGenerator();
 
         string randomPrompt = promptGenerator.GetRandomPrompt();
-        Console.WriteLine("Random Prompt: " + randomPrompt);
+
+        Console.WriteLine(randomPrompt);
+
+
+
+
+        Entry entries = new Entry();
+        Console.WriteLine("What would your entry be?");
+        entries._entryText = Console.ReadLine();
+
 
     }
 }

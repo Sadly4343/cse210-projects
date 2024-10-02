@@ -1,10 +1,10 @@
 public class Journal
 {
-    public List<Entry> _entries = new List<Entry>();
+    public List<Entry> _entries;
 
     public void AddEntry(Entry newEntry)
     {
-        _entries.Add(newEntry);
+
     }
 
     public void DisplayAll()
@@ -12,18 +12,13 @@ public class Journal
 
     }
 
-    public void SaveToFile(List<Entry> _entries)
-    {
-        string filename = "entries.txt";
-
-        using (StreamWriter outputFile = new StreamWriter(filename))
-        {
-            foreach (Entry )
-        }
-    }
-    public void LoadToFile(string file)
+    public void SaveToFile(string file)
     {
 
     }
 
+    public void LoadFromFile(string file)
+    {
+
+    }
 }
