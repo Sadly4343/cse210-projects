@@ -4,8 +4,16 @@ public class Scripture
 
     private List<Word> _words;
 
-    private Scripture(Reference reference, string text)
+    public Scripture(Reference reference, string text)
     {
+        _reference = reference.GetDisplayText();
+        _words = new List<Word>();
+
+        string[] words = text.Split(' ');
+        foreach (string word in words)
+        {
+            _words.Add(new Word(word));
+        }
 
     }
 
@@ -16,7 +24,7 @@ public class Scripture
 
     public string GetDisplayText()
     {
-        return "total";
+        return $"{_words}";
     }
 
     public bool IsCompletelyHidden()
