@@ -1,6 +1,10 @@
 using System;
 using System.Net.Quic;
 
+
+// Added the ability to only select different words as in the stretch challenge to make it so that the words are removed and any
+// that have already been chosen are not selected.
+
 class Program
 {
     static void Main(string[] args)
