@@ -24,7 +24,14 @@ public class Scripture
 
         for (int i = 0; i < numberToHide; i++)
         {
-            int randomWord = random.Next(wordNum);
+
+            int randomWord;
+            do
+            {
+                randomWord = random.Next(wordNum);
+
+            } while (_words[randomWord].IsHidden());
+
 
             _words[randomWord].Hide();
         }
@@ -40,7 +47,14 @@ public class Scripture
     }
     public bool IsCompletelyHidden()
     {
-        return false;
+        foreach (Word word in _words)
+        {
+            if (word.IsHidden() != true)
+            {
+                return false;
+            }
+        }
+        return true;
     }
 
 

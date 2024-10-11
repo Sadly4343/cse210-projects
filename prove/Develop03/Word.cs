@@ -1,3 +1,9 @@
+// Added the ability to only remove the words that have not already been selected from before with a do while loop to make
+// sure that the program selects multiple choices for the letters in the sections and allows it to properly display the
+// outlay.
+
+
+
 public class Word
 {
     private string _text;
