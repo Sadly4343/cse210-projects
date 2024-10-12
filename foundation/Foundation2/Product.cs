@@ -2,16 +2,16 @@ public class Product
 {
     private string _name;
     private string _productId;
-    private double _price;
+    private int _price;
     private int _quantity;
 
-    public double GetCost()
+    public int GetCost()
     {
-        return 1.1;
+        return _price * _quantity;
     }
 
     public string GetDisplayText()
     {
-        return "";
+        return $"{_name}{_productId}";
     }
 }

@@ -5,13 +5,25 @@ public class Address
     private string _state;
     private string _country;
 
+    public Address(string street, string city, string state, string country)
+    {
+        _streetAdd = street;
+        _city = city;
+        _state = state;
+        _country = country;
+    }
     public string GetDisplayText()
     {
-        return "";
+        return $"{_streetAdd} {_city}{_state} {_country}";
     }
 
     public bool GetInUS()
     {
+        if (_country == "USA")
+        {
+            return true;
+        }
         return false;
+
     }
 }

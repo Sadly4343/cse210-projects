@@ -1,3 +1,5 @@
+using System.Numerics;
+
 public class Order
 {
     private Customer _customer;
@@ -5,16 +7,31 @@ public class Order
 
     public string GetShippingLabel()
     {
-        return "";
+        return $"{_customer.GetDisplayText()}";
     }
 
     public string GetPackingLabel()
     {
-        return "";
+        return $"{_products}";
     }
 
-    public string GetTotalCost()
+    public int GetTotalCost()
     {
-        return "";
+        int totals = 0;
+        foreach (Product product in _products)
+        {
+            if (_customer.ReturnUSResidents() == false)
+            {
+                totals += product.GetCost() + 5;
+            }
+            else
+            {
+                totals += product.GetCost() + 35;
+            }
+
+        }
+        return totals;
+
+
     }
 }
