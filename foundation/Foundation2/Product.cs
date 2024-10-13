@@ -19,6 +19,6 @@ public class Product
 
     public string GetDisplayText()
     {
-        return $"{_name}{_productId}";
+        return $"{_name} {_productId} \n";
     }
 }

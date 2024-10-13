@@ -14,12 +14,12 @@ public class Address
     }
     public string GetDisplayText()
     {
-        return $"{_streetAdd} {_city}{_state} {_country}";
+        return $"{_streetAdd} {_city} {_state} {_country}";
     }
 
     public bool GetInUS()
     {
-        if (_country == "USA")
+        if (_country == "usa")
         {
             return true;
         }

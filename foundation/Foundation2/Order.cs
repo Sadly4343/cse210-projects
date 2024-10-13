@@ -5,6 +5,13 @@ public class Order
     private Customer _customer;
     private List<Product> _products;
 
+
+    public Order(Customer customer, List<Product> products)
+    {
+        _customer = customer;
+        _products = products;
+    }
+
     public string GetShippingLabel()
     {
         return $"{_customer.GetDisplayText()}";
@@ -12,7 +19,12 @@ public class Order
 
     public string GetPackingLabel()
     {
-        return $"{_products}";
+        string productlabel = "";
+        foreach (Product product in _products)
+        {
+            productlabel += product.GetDisplayText();
+        }
+        return productlabel;
     }
 
     public int GetTotalCost()
@@ -20,18 +32,19 @@ public class Order
         int totals = 0;
         foreach (Product product in _products)
         {
-            if (_customer.ReturnUSResidents() == false)
-            {
-                totals += product.GetCost() + 5;
-            }
-            else
-            {
-                totals += product.GetCost() + 35;
-            }
-
+            totals += product.GetCost();
+        }
+        if (_customer.ReturnUSResidents() == false)
+        {
+            totals += 5;
+        }
+        else
+        {
+            totals += 35;
         }
         return totals;
-
-
     }
+
+
+
 }
