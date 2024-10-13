@@ -22,12 +22,18 @@ public class Video
 
     public void ShowVideoDetails()
     {
-        Console.WriteLine($"{_title}{_author}{_length}");
+        Console.WriteLine($"{_title} {_author} {_length}");
+        Console.WriteLine();
         ShowComments();
     }
 
     public string ShowCommentQuantity()
     {
-        return "";
+        int count = 0;
+        foreach (Comment comment in _comments)
+        {
+            count++;
+        }
+        return $"Total number of comments is {count}";
     }
 }
