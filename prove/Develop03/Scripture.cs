@@ -51,10 +51,10 @@ public class Scripture
         {
             if (word.IsHidden() != true)
             {
-                return false;
+                return true;
             }
         }
-        return true;
+        return false;
     }
 
 

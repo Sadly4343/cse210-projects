@@ -15,7 +15,7 @@ class Program
         Scripture s1 = new Scripture(r1, "And she shall bring forth a son, and thou shalt call his name Jesus: for he shall save his people from their sins");
 
         string userQuit = "";
-        while (s1.IsCompletelyHidden() != false || userQuit != "quit")
+        while (s1.IsCompletelyHidden() != false && userQuit != "quit")
         {
             string referenceText = r1.GetDisplayText();
             Console.WriteLine(referenceText);
