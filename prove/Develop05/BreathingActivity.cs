@@ -10,9 +10,17 @@ public class BreathingActivity : Activity
 
     public void Run()
     {
-        Console.WriteLine("Start breathing out");
-        ShowCountDown(_duration);
-        Console.
+        DateTime startTime = DateTime.Now;
+        DateTime endTime = startTime.AddSeconds(_duration);
+
+        while (DateTime.Now < endTime)
+        {
+            Console.WriteLine("Breathe In ");
+            ShowCountDown(4);
+            Console.WriteLine("Breathe Out ");
+            ShowCountDown(4);
+
+        }
     }
 
 }
