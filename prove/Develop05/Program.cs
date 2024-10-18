@@ -6,11 +6,13 @@ class Program
     {
         Console.WriteLine("Hello Develop05 World!");
 
-        BreathingActivity activity = new BreathingActivity(60);
+        ReflectingActivity activity = new ReflectingActivity(60);
 
         activity.DisplayStartingMessage();
         activity.Run();
         activity.DisplayEndingMessage();
+
+
 
     }
 }

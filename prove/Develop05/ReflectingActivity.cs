@@ -5,12 +5,30 @@ public class ReflectingActivity : Activity
     private List<string> _questions;
     public ReflectingActivity(int duration) : base("Reflecting", "This is the reflecting activity", duration)
     {
-
+        _duration = duration;
     }
 
     public void Run()
     {
-        
+        DateTime startTime = DateTime.Now;
+        DateTime endTime = startTime.AddSeconds(_duration);
+        Console.WriteLine("Consider the following prompt: ");
+        Console.WriteLine();
+        string randomPrompt = GetRandomPrompt();
+        Console.WriteLine(randomPrompt);
+        Console.WriteLine($"Press Enter when you are ready ");
+        string userInput = Console.ReadLine();
+
+        while (userInput == "" && DateTime.Now < endTime)
+        {
+            string ranQuestion = GetRandomQuestions();
+            Console.WriteLine(ranQuestion);
+            ShowCountDown(5);
+
+        }
+
+
+
     }
 
     public string GetRandomPrompt()
@@ -48,7 +66,7 @@ public class ReflectingActivity : Activity
         Random random = new Random();
         int index = random.Next(_questions.Count);
 
-        return _prompts[index];
+        return _questions[index];
     }
 
     public void DisplayPrompt()
