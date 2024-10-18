@@ -3,7 +3,7 @@ public class ReflectingActivity : Activity
 
     private List<string> _prompts;
     private List<string> _questions;
-    public ReflectingActivity()
+    public ReflectingActivity(int duration) : base("Reflecting", "This is the reflecting activity", duration)
     {
 
     }
