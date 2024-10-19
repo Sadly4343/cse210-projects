@@ -23,7 +23,8 @@ public class ReflectingActivity : Activity
         {
             string ranQuestion = GetRandomQuestions();
             Console.WriteLine(ranQuestion);
-            ShowCountDown(5);
+            ShowSpinner(5);
+            Console.WriteLine();
 
         }
 
