@@ -4,15 +4,47 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello Develop05 World!");
+        while (true)
+        {
+            Console.WriteLine("Menu");
+            Console.WriteLine("1. Breathing");
+            Console.WriteLine("2. Reflecting");
+            Console.WriteLine("3. Listing");
+            Console.WriteLine("4. Quit");
 
-        ListingActivity activity = new ListingActivity(60);
+            string choice = Console.ReadLine();
+            if (choice == "1")
+            {
+                BreathingActivity activity = new BreathingActivity(20);
 
-        activity.DisplayStartingMessage();
-        activity.Run();
-        activity.DisplayEndingMessage();
+                activity.DisplayStartingMessage();
+                activity.Run();
+                activity.DisplayEndingMessage();
 
 
+            }
+            else if (choice == "2")
+            {
+                ReflectingActivity activity = new ReflectingActivity(20);
 
+                activity.DisplayStartingMessage();
+                activity.Run();
+                activity.DisplayEndingMessage();
+            }
+            else if (choice == "3")
+            {
+                ListingActivity activity = new ListingActivity(20);
+
+                activity.DisplayStartingMessage();
+                activity.Run();
+                activity.DisplayEndingMessage();
+            }
+            else if (choice == "4")
+            {
+                break;
+            }
+        }
     }
 }
+
+

@@ -27,6 +27,7 @@ public class Activity
         Console.WriteLine("Well Done!!!");
         Thread.Sleep(3000);
         Console.WriteLine($"Nice Job, You completed another {_duration} of the {_name} Activity!");
+        ShowSpinner(5);
 
     }
 

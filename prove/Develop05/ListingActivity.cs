@@ -1,4 +1,7 @@
+using System.ComponentModel;
 using System.Diagnostics.Metrics;
+using System.Net.NetworkInformation;
+using System.Numerics;
 
 public class ListingActivity : Activity
 {
@@ -6,28 +9,19 @@ public class ListingActivity : Activity
     private List<string> _prompts;
     public ListingActivity(int duration) : base("Listing", "This is the Listing activity", duration)
     {
-
+        _count = 0;
     }
 
     public void Run()
     {
-        DateTime startTime = DateTime.Now;
-        DateTime endTime = startTime.AddSeconds(_duration);
         Console.WriteLine("List as many responses you can to the following prompt ");
         Console.WriteLine();
         string randomPrompt = GetRandomPrompt();
         Console.WriteLine(randomPrompt);
         Console.WriteLine($"You may begin in ");
         ShowCountDown(5);
-        while (DateTime.Now < endTime)
-        {
-            List<string> responses = GetListFromUser();
-
-            int totalResponses = responses.Count;
-            Console.WriteLine($"These are how many responses {totalResponses}");
-
-
-        }
+        GetListFromUser();
+        Console.WriteLine(_count);
     }
 
     public string GetRandomPrompt()
@@ -48,14 +42,15 @@ public class ListingActivity : Activity
 
     public List<string> GetListFromUser()
     {
-        List<string> userResponse = new List<string>();
-        Console.WriteLine("Your reponses below");
-        string userLine = Console.ReadLine();
-        foreach (var response in userResponse)
+        DateTime startTime = DateTime.Now;
+        DateTime endTime = startTime.AddSeconds(_duration);
+        List<string> userResponses = new List<string>();
+        while (DateTime.Now < endTime)
         {
-            userResponse.Add(userLine);
+            string userReplys = Console.ReadLine();
+            userResponses.Add(userReplys);
+            _count++;
         }
-        return userResponse;
-
+        return userResponses;
     }
 }
