@@ -1,5 +1,5 @@
 using System;
-
+// Added the ability to only have prompts selected once they have been chosen not the same over and over.
 class Program
 {
     static void Main(string[] args)
