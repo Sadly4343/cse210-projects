@@ -4,7 +4,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello Foundation1 World!");
+        List<Video> videos = new List<Video>();
 
         Video v1 = new Video
         {
@@ -16,10 +16,7 @@ class Program
         v1.AddComment(new Comment { _name = "Jack", _text = ": This was awesome" });
         v1.AddComment(new Comment { _name = "Theo", _text = ": Epic Video!" });
         v1.AddComment(new Comment { _name = "James", _text = ": I liked the Ocean!" });
-        v1.ShowVideoDetails();
-        Console.WriteLine();
-        Console.WriteLine(v1.ShowCommentQuantity());
-        Console.WriteLine();
+        videos.Add(v1);
         Video v2 = new Video
         {
             _title = "Tidal",
@@ -30,10 +27,7 @@ class Program
         v2.AddComment(new Comment { _name = "Theo", _text = ": This was awesome" });
         v2.AddComment(new Comment { _name = "Jack", _text = ": I liked the Ocean!" });
         v2.AddComment(new Comment { _name = "James", _text = ": Epic Video!" });
-        v2.ShowVideoDetails();
-        Console.WriteLine();
-        Console.WriteLine(v2.ShowCommentQuantity());
-        Console.WriteLine();
+        videos.Add(v2);
 
         Video v3 = new Video
         {
@@ -45,10 +39,8 @@ class Program
         v3.AddComment(new Comment { _name = "Theo", _text = ": I liked the Ocean!" });
         v3.AddComment(new Comment { _name = "Jack", _text = ": This was awesome" });
         v3.AddComment(new Comment { _name = "James", _text = ": Epic Video!" });
-        v3.ShowVideoDetails();
-        Console.WriteLine();
-        Console.WriteLine(v3.ShowCommentQuantity());
-        Console.WriteLine();
+        videos.Add(v3);
+
         Video v4 = new Video
         {
             _title = "Ocean",
@@ -59,8 +51,15 @@ class Program
         v4.AddComment(new Comment { _name = "Jack", _text = ": Epic Video!" });
         v4.AddComment(new Comment { _name = "Theo", _text = ": I liked the Ocean!" });
         v4.AddComment(new Comment { _name = "James", _text = ": This was awesome" });
-        v4.ShowVideoDetails();
-        Console.WriteLine();
-        Console.WriteLine(v4.ShowCommentQuantity());
+        videos.Add(v4);
+
+        foreach (Video video in videos)
+        {
+            video.ShowVideoDetails();
+            Console.WriteLine();
+            Console.WriteLine(video.ShowCommentQuantity());
+            Console.WriteLine();
+
+        }
     }
 }

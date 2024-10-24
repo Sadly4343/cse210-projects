@@ -1,3 +1,5 @@
+using System.Collections.Concurrent;
+
 public class Video
 {
 
@@ -29,11 +31,7 @@ public class Video
 
     public string ShowCommentQuantity()
     {
-        int count = 0;
-        foreach (Comment comment in _comments)
-        {
-            count++;
-        }
+        int count = _comments.Count;
         return $"Total number of comments is {count}";
     }
 }
