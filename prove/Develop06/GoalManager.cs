@@ -78,7 +78,7 @@ public class GoalManager
     }
     public void LevelUp()
     {
-        if (_score <= 500)
+        if (_score >= 500)
         {
             DateTime startTime = DateTime.Now;
             DateTime endTime = startTime.AddSeconds(10);
