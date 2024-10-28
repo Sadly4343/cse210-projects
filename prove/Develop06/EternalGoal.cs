@@ -1,20 +1,22 @@
+using System.Drawing;
+
 public class EternalGoal : Goal
 {
-    public EternalGoal(string name, string description, string points) : base(name, description, points)
+    public EternalGoal(string name, string description, int points) : base(name, description, points)
     {
     }
     public override void RecordEvent()
     {
-
+        _points++;
     }
 
-    public override bool isComplete()
+    public override bool IsComplete()
     {
         return false;
     }
     public override string GetStringRepresenation()
     {
-        return "";
+        return $"EternalGoal: {_name}, {_description}, {_points}";
     }
 
 
