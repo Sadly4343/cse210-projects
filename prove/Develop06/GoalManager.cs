@@ -1,5 +1,7 @@
 using System.Drawing;
 using System.Runtime;
+using System.Runtime.CompilerServices;
+using System.IO;
 
 public class GoalManager
 {
@@ -18,13 +20,15 @@ public class GoalManager
         {
             while (true)
             {
-                Console.WriteLine(_score);
                 Console.WriteLine("Menu");
+                Console.WriteLine(_score);
                 Console.WriteLine("1. Create New Goal");
                 Console.WriteLine("2. List Goals");
                 Console.WriteLine("3. Save Goals");
-                Console.WriteLine("4. Record Event");
-                Console.WriteLine("5. Quit");
+                Console.WriteLine("4. Load Goals");
+                Console.WriteLine("5. Record Event");
+                Console.WriteLine("6. Quit");
+                LevelUp();
 
                 string choice = Console.ReadLine();
                 if (choice == "1")
@@ -38,11 +42,11 @@ public class GoalManager
                 }
                 else if (choice == "3")
                 {
-
+                    SaveGoals();
                 }
                 else if (choice == "4")
                 {
-
+                    LoadGoals();
                 }
                 else if (choice == "5")
                 {
@@ -52,6 +56,7 @@ public class GoalManager
                 {
                     break;
                 }
+
             }
         }
     }
@@ -70,6 +75,25 @@ public class GoalManager
             Console.WriteLine(goal.GetDetailsString());
         }
 
+    }
+    public void LevelUp()
+    {
+        if (_score <= 500)
+        {
+            DateTime startTime = DateTime.Now;
+            DateTime endTime = startTime.AddSeconds(10);
+
+            while (DateTime.Now < endTime)
+            {
+                Console.Write("=");
+                Thread.Sleep(1000);
+                Console.Write("/");
+                Thread.Sleep(1000);
+                Console.Write("!");
+                Console.WriteLine("LEVEL UP");
+            }
+
+        }
     }
     public void CreateGoal()
     {
@@ -90,6 +114,7 @@ public class GoalManager
             int points;
             int target;
             int bonus;
+            bool complete;
             Console.WriteLine("Choose a goal");
             Console.WriteLine("1. Simple Goal");
             Console.WriteLine("2. Eternal Goal");
@@ -103,24 +128,25 @@ public class GoalManager
             points = int.Parse(Console.ReadLine());
             if (choice == "1")
             {
-                SimpleGoal simple = new SimpleGoal(name, desc, points);
+                complete = false;
+                SimpleGoal simple = new SimpleGoal(name, desc, points, complete);
                 _goals.Add(simple);
 
                 break;
 
             }
-            if (choice == "2")
+            else if (choice == "2")
             {
                 EternalGoal eternal = new EternalGoal(name, desc, points);
                 _goals.Add(eternal);
 
                 break;
             }
-            if (choice == "3")
+            else if (choice == "3")
             {
                 Console.WriteLine("What is the bonus points?");
                 bonus = int.Parse(Console.ReadLine());
-                Console.WriteLine("What is the ?");
+                Console.WriteLine("What is target number for bonus?");
                 target = int.Parse(Console.ReadLine());
                 ChecklistGoal check = new ChecklistGoal(name, desc, points, bonus, target);
                 _goals.Add(check);
@@ -158,10 +184,62 @@ public class GoalManager
     }
     public void SaveGoals()
     {
+        Console.WriteLine("Where would you like to save your goals? ");
+        string filename = Console.ReadLine();
+        using (StreamWriter outputFile = new StreamWriter(filename))
+        {
+            outputFile.WriteLine(_score);
+            foreach (Goal goal in _goals)
+            {
+                outputFile.WriteLine(goal.GetStringRepresenation());
+            }
+        }
+
 
     }
     public void LoadGoals()
     {
+        Console.WriteLine("What is your file to open? ");
+        string filename = Console.ReadLine();
+        _goals.Clear();
+        string[] lines = System.IO.File.ReadAllLines(filename);
+        _score = int.Parse(lines[0]);
+
+        foreach (string line in lines.Skip(1))
+        {
+            string[] parts = line.Split(",");
+            string goalType = parts[0];
+            string name = parts[1];
+            string description = parts[2];
+            int points = int.Parse(parts[3]);
+            Goal goal;
+            if (goalType == "EternalGoal")
+            {
+                goal = new EternalGoal(name, description, points);
+
+            }
+            else if (goalType == "SimpleGoal")
+            {
+                bool complete = bool.Parse(parts[4]);
+                goal = new SimpleGoal(name, description, points, complete);
+
+            }
+            else if (goalType == "ChecklistGoal")
+            {
+                int bonus = int.Parse(parts[4]);
+                int target = int.Parse(parts[5]);
+                goal = new ChecklistGoal(name, description, points, bonus, target);
+
+            }
+            else
+            {
+                break;
+            }
+            _goals.Add(goal);
+
+
+
+        }
 
     }
 
