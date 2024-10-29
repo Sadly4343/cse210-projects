@@ -1,26 +1,29 @@
+using System.Security.Cryptography.X509Certificates;
+
 public class RunningActivity : Activity
 {
-    private int _distance;
+    private double _distance;
 
-    public RunningActivity(string name, string date, int length, int distance) : base(name, date, length)
+    public RunningActivity(string name, string date, int length, double distance) : base(name, date, length)
     {
         _distance = distance;
     }
-    public override int Distance()
+    public override double Distance()
     {
+
         return _distance;
     }
-    public override int Speed()
+    public override double Speed()
     {
-        return Distance() / _length;
+
+        double hours = _length / 60;
+
+        return _distance / hours;
     }
-    public override int Pace()
+    public override double Pace()
     {
-        return 60 / Speed();
-    }
-    public override string GetSummary()
-    {
-        return $"{_date} {_name} {_length} {Distance()} {Speed()} {Pace()}";
+        double hours = _length / 60;
+        return hours / _distance * 60;
     }
 
 

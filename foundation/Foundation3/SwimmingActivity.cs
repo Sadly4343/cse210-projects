@@ -6,16 +6,18 @@ public class SwimmingActivity : Activity
     {
         _laps = laps;
     }
-    public override int Distance()
+    public override double Distance()
     {
-        return 3;
+        return _laps * 50 / 1000 * 0.62;
     }
-    public override int Speed()
+    public override double Speed()
     {
-        return 3;
+        double hours = _length / 60;
+
+        return Distance() / hours;
     }
-    public override int Pace()
+    public override double Pace()
     {
-        return 60 / Speed();
+        return _length / Distance();
     }
 }

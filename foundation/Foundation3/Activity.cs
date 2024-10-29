@@ -4,7 +4,7 @@ public abstract class Activity
 
     protected string _date;
 
-    protected int _length;
+    protected double _length;
 
     public Activity(string name, string date, int length)
     {
@@ -13,21 +13,21 @@ public abstract class Activity
         _length = length;
     }
 
-    public virtual int Distance()
+    public virtual double Distance()
     {
         return 0;
     }
-    public virtual int Speed()
+    public virtual double Speed()
     {
         return 0;
     }
-    public virtual int Pace()
+    public virtual double Pace()
     {
         return 0;
     }
 
-    public virtual string GetSummary()
+    public virtual void GetSummary()
     {
-        return $"{_date} {_name} {_length} {Distance()} {Speed()} {Pace()}";
+        Console.WriteLine($"{_date} {_name} ({_length} min)- Distance {Distance()} miles, Speed {Speed()} mph, Pace: {Pace()} min per mile");
     }
 }
