@@ -28,6 +28,6 @@ public abstract class Activity
 
     public virtual void GetSummary()
     {
-        Console.WriteLine($"{_date} {_name} ({_length} min)- Distance {Distance()} miles, Speed {Speed()} mph, Pace: {Pace()} min per mile");
+        Console.WriteLine($"{_date} {_name} ({_length} min)- Distance {Distance():F2} miles, Speed {Speed():F2} mph, Pace: {Pace():F2} min per mile");
     }
 }
