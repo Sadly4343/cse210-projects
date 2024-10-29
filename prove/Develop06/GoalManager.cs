@@ -81,7 +81,7 @@ public class GoalManager
         if (_score >= 500)
         {
             DateTime startTime = DateTime.Now;
-            DateTime endTime = startTime.AddSeconds(10);
+            DateTime endTime = startTime.AddSeconds(5);
 
             while (DateTime.Now < endTime)
             {
@@ -115,6 +115,7 @@ public class GoalManager
             int target;
             int bonus;
             bool complete;
+            int amountCompleted;
             Console.WriteLine("Choose a goal");
             Console.WriteLine("1. Simple Goal");
             Console.WriteLine("2. Eternal Goal");
@@ -144,11 +145,12 @@ public class GoalManager
             }
             else if (choice == "3")
             {
+                amountCompleted = 0;
                 Console.WriteLine("What is the bonus points?");
                 bonus = int.Parse(Console.ReadLine());
                 Console.WriteLine("What is target number for bonus?");
                 target = int.Parse(Console.ReadLine());
-                ChecklistGoal check = new ChecklistGoal(name, desc, points, bonus, target);
+                ChecklistGoal check = new ChecklistGoal(name, desc, points, bonus, amountCompleted, target);
                 _goals.Add(check);
                 Console.WriteLine(_goals);
                 break;
@@ -228,8 +230,9 @@ public class GoalManager
             else if (goalType == "ChecklistGoal")
             {
                 int bonus = int.Parse(parts[4]);
-                int target = int.Parse(parts[5]);
-                goal = new ChecklistGoal(name, description, points, bonus, target);
+                int amountCompleted = int.Parse(parts[5]);
+                int target = int.Parse(parts[6]);
+                goal = new ChecklistGoal(name, description, points, bonus, amountCompleted, target);
 
             }
             else
