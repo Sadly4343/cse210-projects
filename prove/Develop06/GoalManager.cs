@@ -153,6 +153,7 @@ public class GoalManager
                 Console.WriteLine(_goals);
                 break;
             }
+            break;
 
         }
 
